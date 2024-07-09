@@ -1,17 +1,8 @@
 template <typename T>
-class LazySegmentTree
-{
-  // Change push logic depending on update type (assignment, addition etc.)
-  // Change return value from query function
-  // Change last line of update function
-  // Change type of update (assign, add etc.)
-  // Change variables in query
-  // Change l and r for both functions if it is the case
-  // Don’t assign 0 to node in update and query
+class LazySegmentTree {
 private:
   vector<T> tree, lazy;
-  void lazyPush(int v)
-  {
+  void lazyPush(int v) {
     lazy[2 * v] += lazy[v];
     tree[2 * v] += lazy[v];
     lazy[2 * v + 1] += lazy[v];
@@ -20,13 +11,11 @@ private:
   }
 
 public:
-  LazySegmentTree(int n)
-  {
+  LazySegmentTree(int n) {
     tree.resize(4 * n + 4);
     lazy.resize(4 * n + 4);
   }
-  void update(int node, int l, int r, T value, int st, int fi)
-  {
+  void update(int node, int l, int r, T value, int st, int fi) {
     if (r < l or fi < l or r < st)
     {
       return;
