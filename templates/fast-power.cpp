@@ -1,9 +1,9 @@
 int const mod = 998244353, N = 1e6 + 6;
-int fact[N];
+int fact[N], invFact[N];
 
 int mul(int a, int b) {
     if (a < 0) a += mod;
-    if (b < 0) b += mod;
+    if (b < 0) b += mod;    
     return 1LL * a * b % mod;
 }
 
@@ -30,7 +30,19 @@ int inv(int num) {
 }
 
 int nCr(int n, int r) {
-   return mul(fact[n], mul(inv(fact[r]), inv(fact[n - r])));
+    if (n < 0 or n < r or r < 0) {
+        return 0;
+    }
+   return mul(fact[n], mul(invFact[r], invFact[n - r]));
 }
 
-
+int main() {
+    ios_base::sync_with_stdio(false); cin.tie(nullptr);
+    fact[0] = 1;
+    invFact[0] = 1;
+    for (int i = 1; i < N; ++i) {
+        fact[i] = mul(fact[i - 1], i);
+        invFact[i] = inv(fact[i]);
+    }
+    return 0;
+}
