@@ -1,16 +1,16 @@
-int const mod = 998244353, N = 1e6 + 6;
+int const M = 998244353, N = 1e6 + 6;
 int fact[N], invFact[N];
 
 int mul(int a, int b) {
-    if (a < 0) a += mod;
-    if (b < 0) b += mod;    
-    return 1LL * a * b % mod;
+    if (a < 0) a += M;
+    if (b < 0) b += M;    
+    return 1LL * a * b % M;
 }
 
 int add(int a, int b) {
-    if (a < 0) a += mod;
-    if (b < 0) b += mod;
-    return (a + b) % mod;
+    if (a < 0) a += M;
+    if (b < 0) b += M;
+    return (a + b) % M;
 }
 
 int fastPow(int base, int exp) {
@@ -26,7 +26,7 @@ int fastPow(int base, int exp) {
 }
 
 int inv(int num) {
-    return fastPow(num, mod - 2);
+    return fastPow(num, M - 2);
 }
 
 int nCr(int n, int r) {
